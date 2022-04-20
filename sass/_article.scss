@@ -1,0 +1,136 @@
+article {
+  padding: 20px;
+  line-height: 2;
+  figure {
+    margin-bottom: 2em;
+  }
+  // ======== 見出し ================
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0.5em;
+    padding-top: 1em;
+  }
+  h1 {
+    font-size: 30px;
+    @media only screen and (max-width: $bp_S) {
+      font-size: 26px;
+    }
+  }
+  h2 {
+    font-size: 20px;
+    border-bottom: solid 1px $color_black;
+  }
+  p {
+    margin-bottom: 2em;
+    line-height: 1.8;
+  }
+  // ======== テキストリンク ================
+  a {
+    text-decoration: underline;
+
+    @include txt_link_color($color_gray);
+    @include target_blank_icon($color_gray);
+    @include pdf_icon($color_gray);
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  // ======== 画像 ================
+  .wp-block-image {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    figcaption {
+      margin: 0;
+      color: $color_gray;
+      font-size: 0.8em;
+      line-height: 1;
+    }
+  }
+  // ======== リスト ================
+  ul,
+  ol {
+    margin-bottom: 0.5em;
+    padding-left: 1.5em;
+  }
+  ol {
+    list-style-type: decimal;
+  }
+  ul {
+    list-style-type: disc;
+    ul {
+      list-style-type: circle;
+      ul {
+        list-style-type: square;
+      }
+    }
+  }
+  // ======== テーブル ================
+  table {
+    width: 100%;
+    font-size: 0.9em;
+
+    border-collapse: collapse;
+    overflow-x: scroll;
+    white-space: nowrap;
+    tr {
+      th,
+      td {
+        padding: 0.2em 0.5em;
+        border: solid 1px $color_gray;
+      }
+    }
+  }
+  // ======== 引用 ================
+  blockquote {
+    margin-bottom: 2.5em;
+    padding: 1em 1.5em;
+    background: $color_gray_l;
+    font-size: 0.9em;
+    font-style: italic;
+    cite {
+      display: block;
+      color: $color_gray;
+      font-size: 0.9em;
+      text-align: right;
+    }
+  }
+  // ======== コード ================
+  code {
+    display: inline-block;
+    padding: 0 0.6em;
+    background: $color_gray_l;
+    font-size: 0.9em;
+
+    word-break: break-all;
+  }
+  // ======== ブロックコード ================
+  pre {
+    margin-bottom: 2em;
+    code {
+      display: block;
+      padding: 1.5em;
+    }
+  }
+  // ======== YouTube ================
+  .is-provider-youtube {
+    .wp-block-embed__wrapper {
+      width: 100%;
+      padding-top: 56.25%;
+      position: relative;
+      iframe {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+}

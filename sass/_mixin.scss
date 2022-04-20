@@ -1,0 +1,160 @@
+// ================================
+// テキストリンク
+// ================================
+@mixin txt_link_color($txt_link_color) {
+  color: $txt_link_color;
+  &:hover,
+  &:link,
+  &:active,
+  &:focus {
+    color: $txt_link_color;
+  }
+}
+// target="_blank" アイコン
+@mixin target_blank_icon($target_blank_icon) {
+  &[target="_blank"]::after {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin: 0 0.4em -0.1em 0.2em;
+    background-color: $target_blank_icon;
+    mask: url("../img/parts/icon/external.svg");
+    -webkit-mask: url("../img/parts/icon/external.svg");
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+}
+// PDF アイコン
+@mixin pdf_icon($pdf_icon) {
+  &[href$=".pdf"]::after {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin: 0 0.4em -0.1em 0.2em;
+    background-color: $pdf_icon;
+    mask: url("../img/parts/icon/pdf.svg");
+    -webkit-mask: url("../img/parts/icon/pdf.svg");
+    mask-size: cover;
+    -webkit-mask-size: cover;
+  }
+}
+// ================================
+// リストスタイル
+// ================================
+@mixin list_style_icon($list_style_icon) {
+  padding-left: 1.5em;
+  position: relative;
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 1.1em;
+    height: 1.1em;
+    background-color: $list_style_icon;
+    mask: url("../img/parts/icon/list_style.svg");
+    -webkit-mask: url("../img/parts/icon/list_style.svg");
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    position: absolute;
+    top: 0.5em;
+    left: 0;
+  }
+}
+// ================================
+// 画像表示アニメーション
+// ================================
+// ブロックマスクアニメーション
+@mixin img_animation_musk($color) {
+  display: inline-block;
+  line-height: 0;
+  overflow: hidden;
+  position: relative;
+  &:before,
+  &:after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  &:before {
+    background: $color;
+    animation: musk_1 0.8s 0s;
+    @keyframes musk_1 {
+      0% {
+        width: 0;
+        left: 0;
+      }
+      50% {
+        width: 100%;
+        left: 0;
+      }
+      51% {
+        width: 100%;
+        left: 0;
+      }
+      100% {
+        width: 0;
+        left: 100%;
+      }
+    }
+  }
+  &:after {
+    background-image: linear-gradient(
+      90deg,
+      lighten($color, 30%) 20%,
+      lighten($color, 20%) 20%,
+      lighten($color, 20%) 60%,
+      lighten($color, 10%) 60%,
+      lighten($color, 10%) 100%
+    );
+    background-size: 100% auto;
+    animation: musk_2 0.6s 0.2s;
+    @keyframes musk_2 {
+      0% {
+        width: 300%;
+        left: -300%;
+      }
+
+      100% {
+        width: 50%;
+        left: 100%;
+      }
+    }
+  }
+  img {
+    animation: musk_img 0s 0.5s both;
+    @keyframes musk_img {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+}
+// ゆっくりズームアップダウン
+@mixin img_scale($duration) {
+  line-height: 0;
+  overflow: hidden;
+  img {
+    animation: img_scale $duration infinite;
+    @keyframes img_scale {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

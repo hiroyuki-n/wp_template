@@ -1,0 +1,86 @@
+$color_white: #fafafa;
+$color_black: #111;
+$color_gray_l: #ddd;
+$color_gray: #aaa;
+$color_gray_d: #666;
+
+$radius_S: 2px;
+$radius_M: 5px;
+$radius_L: 10px;
+
+$shadow_S: 5px 5px 10px -5px $color_gray;
+$shadow_M: 10px 10px 30px -15px $color_gray;
+$shadow_L: 20px 20px 50px -25px $color_gray;
+
+// ================================
+// テキスト選択時の文字色・背景色
+// ================================
+::selection {
+  background: $color_black;
+  color: $color_white;
+}
+//Firefox
+::-moz-selection {
+  background: $color_black;
+  color: $color_white;
+}
+// ================================
+// ブレイクポイントの設定
+// ================================
+$bp_XXL: 1600px;
+$bp_XL: 1024px;
+$bp_L: 768px;
+$bp_M: 640px;
+$bp_S: 420px;
+$bp_XS: 320px;
+
+// ================================
+// リセット
+// ================================
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ol,
+ul {
+  list-style: none;
+}
+p {
+  margin-bottom: 0.5em;
+  line-height: 2;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: $color_black;
+  transition: 0.3s;
+  &:hover,
+  &:link,
+  &:active,
+  &:focus {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    color: $color_black;
+  }
+  &:hover {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    opacity: 0.6;
+  }
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  tr {
+    th,
+    td {
+      text-align: left;
+      vertical-align: top;
+    }
+  }
+}
